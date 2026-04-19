@@ -78,9 +78,15 @@ html {
   width: 100%;
 }
 
+.iti {
+  width: 100%;
+}
+
 .iti input {
   width: 100%;
-  padding-left: 60px !important;
+  padding-left: 90px !important;
+  height: 48px;
+  border-radius: 0.5rem;
 }
 </style>
 
@@ -706,6 +712,14 @@ if (leadForm) {
     fd.append(CONFIG.form.fields.email, email);
     fd.append(CONFIG.form.fields.number, finalPhone);
     fd.append(CONFIG.form.fields.whatsapp_link, waUserLink);
+
+    fd.append("entry.2144108090", getParam('utm_source'));
+    fd.append("entry.964105222", getParam('utm_medium'));
+    fd.append("entry.1923745302", getParam('utm_campaign'));
+    fd.append("entry.172212880", getParam('utm_content'));
+    fd.append("entry.171977719", getParam('utm_term'));
+    fd.append("entry.1169383291", getParam('utm_id'));
+    
     
     //fd.append("country", countryData.iso2);
     //fd.append("dial_code", countryData.dialCode);
@@ -721,6 +735,23 @@ if (leadForm) {
       console.error('Error form', err);
     }
 
+    // SEND N8N
+try {
+  await fetch(CONFIG.n8n.webhook, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      nombre: firstName,
+      apellido: lastName,
+      email,
+      number: finalPhone,
+      source: "landing"
+    })
+  });
+} catch (err) {
+  console.error('Error n8n', err);
+}
+
     // REDIRECT A TU WHATSAPP
     const waYou = `https://wa.me/${CONFIG.whatsapp.number}?text=${encodeURIComponent(
       `Hola, soy ${fullName}. Quiero la prueba gratis.`
@@ -731,40 +762,6 @@ if (leadForm) {
     }, 800);
 
   });
-}
-</script>
-
-<script>
-// N8N (DESACOPLADO)
-const formN8N = document.getElementById('lead-form');
-
-if (formN8N) {
-
-  formN8N.addEventListener('submit', async () => {
-
-    const nombre = document.getElementById('first_name')?.value || "";
-    const apellido = document.getElementById('last_name')?.value || "";
-    const email = document.getElementById('email')?.value || "";
-    const number = document.getElementById('number')?.value || "";
-
-    try {
-      await fetch(CONFIG.n8n.webhook, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          nombre,
-          apellido,
-          email,
-          number,
-          source: "landing"
-        })
-      });
-    } catch (err) {
-      console.error('Error n8n', err);
-    }
-
-  });
-
 }
 </script>
 
