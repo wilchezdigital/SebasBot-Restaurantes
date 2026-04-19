@@ -582,10 +582,29 @@ function getParam(name){
 // Año dinámico
 document.getElementById('year').textContent = new Date().getFullYear();
 </script>
+  
 
 <script>
 // FORM GENERAL (CORE LMS + WHATSAPP)
 const leadForm = document.getElementById('lead-form');
+
+function isValidEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+}
+
+function cleanPhone(phone) {
+  return phone.replace(/\s+/g, '').replace(/[^\d+]/g, '');
+}
+
+function isValidPhone(phone) {
+  const cleaned = cleanPhone(phone);
+
+  // Obligatorio indicativo
+  if (!cleaned.startsWith('+')) return false;
+
+  const digits = cleaned.replace('+', '');
+  return /^[1-9]\d{7,14}$/.test(digits);
+}
 
 if (leadForm) {
 
@@ -606,34 +625,40 @@ if (leadForm) {
 
     const numberInput = document.getElementById('number');
     const number = numberInput.value.trim();
-    const numberClean = number.replace(/\s+/g, '');
+    const numberClean = cleanPhone(number);
+    const email = document.getElementById('email').value.trim();
 
-    // VALIDACIÓN
-    if (!/^\+?[1-9]\d{6,14}$/.test(numberClean)) {
-      alert("Introduce un teléfono válido");
-      return;
+    // VALIDACIÓN NUMBER
+    if (!isValidPhone(numberClean)) {
+    alert("Introduce un teléfono válido con indicativo de país. Ej: +34 600123456 o 34600123456");
+    return;
+    }
+
+    // VALIDACIÓN EMAIL
+    if (!isValidEmail(email)) {
+    alert("Introduce un email válido. Ej: nombre@email.com");
+    return;
     }
 
     numberInput.value = numberClean;
 
     const firstName = document.getElementById('first_name').value.trim();
-const lastName  = document.getElementById('last_name').value.trim();
-const email     = document.getElementById('email').value.trim();
-const fullName  = (firstName + ' ' + lastName).trim();
+    const lastName  = document.getElementById('last_name').value.trim();
+    const fullName  = (firstName + ' ' + lastName).trim();
 
-// LINK WHATSAPP USER
-const usernumber = numberClean.replace('+','');
-const followMsg = `Hola ${fullName}, te contacto por tu interés en SebasBot.`;
-const waUserLink = `https://wa.me/${usernumber}?text=${encodeURIComponent(followMsg)}`;
-
-// FORM DATA (CORRECTO)
-const fd = new FormData();
-
-fd.append(CONFIG.form.fields.first_name, firstName);
-fd.append(CONFIG.form.fields.last_name, lastName);
-fd.append(CONFIG.form.fields.email, email);
-fd.append(CONFIG.form.fields.number, numberClean);
-fd.append(CONFIG.form.fields.whatsapp_link, waUserLink);
+    // LINK WHATSAPP USER
+    const usernumber = numberClean.replace('+','');
+    const followMsg = `Hola ${fullName}, te contacto por tu interés en SebasBot.`;
+    const waUserLink = `https://wa.me/${usernumber}?text=${encodeURIComponent(followMsg)}`;
+    
+    // FORM DATA (CORRECTO)
+    const fd = new FormData();
+    
+    fd.append(CONFIG.form.fields.first_name, firstName);
+    fd.append(CONFIG.form.fields.last_name, lastName);
+    fd.append(CONFIG.form.fields.email, email);
+    fd.append(CONFIG.form.fields.number, numberClean);
+    fd.append(CONFIG.form.fields.whatsapp_link, waUserLink);
 
     // SEND GOOGLE FORM
     try {
