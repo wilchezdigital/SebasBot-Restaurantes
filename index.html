@@ -1,567 +1,557 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SebasBot | Automatiza tus conversaciones con IA</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SebasBot | Automatiza tus conversaciones con IA</title>
 
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-X7BP0P3K8H"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-X7BP0P3K8H');
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'G-X7BP0P3K8H');
 </script>
-  
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
-  <style>
-    body {
-      background-color: #0B0B0F;
-      color: #F5F6F7;
-      font-family: 'Inter', sans-serif;
-    }
-    .gradient-text {
-      background: linear-gradient(90deg, #8B5CF6, #06B6D4);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .btn-primary {
-      background: linear-gradient(90deg, #3B82F6, #06B6D4);
-      color: white;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-    .btn-primary:hover {
-      filter: brightness(1.2);
-    }
-    .btn-light {
-      background-color: #F5F6F7;
-      color: #0B0B0F;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-    .btn-light:hover {
-      background-color: #E2E8F0;
-    }
-    .section-bg {
-      background-color: #111114;
-    }
-    .section-img {
-  position: relative;
-  background-image: url('camarero-en-restaurante-sonriendo.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+<style>
+body {
+background-color: #FFFFFF;
+color: #111827;
+font-family: 'Inter', sans-serif;
+}
+.gradient-text {
+background: linear-gradient(90deg, #8B5CF6, #06B6D4);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+.btn-primary {
+background: linear-gradient(90deg, #3B82F6, #06B6D4);
+color: white;
+font-weight: 600;
+transition: all 0.3s ease;
+}
+.btn-primary:hover {
+filter: brightness(1.2);
+}
+.btn-light {
+background-color: #F5F6F7;
+color: #0B0B0F;
+font-weight: 600;
+transition: all 0.3s ease;
+}
+.btn-light:hover {
+background-color: #E2E8F0;
+}
+.section-bg {
+background-color: #F8FAFC;
+}
+.section-img {
+position: relative;
+background-image: url('camarero-en-restaurante-sonriendo.png');
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
 }
 
 .section-img::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to right,
-    rgba(11,18,32,0.9) 0%,
-    rgba(11,18,32,0.7) 50%,
-    rgba(11,18,32,0.5) 100%
-  );
-  z-index: 0;
+content: "";
+position: absolute;
+inset: 0;
+background: linear-gradient(
+to right,
+rgba(255,255,255,0.9) 0%,
+rgba(255,255,255,0.7) 50%,
+rgba(255,255,255,0.5) 100%
+);
+z-index: 0;
 }
-  </style>
+</style>
+
 </head>
 <body>
 
-  <!-- NAVBAR -->
-  <header class="sticky top-0 z-30 bg-gradient-to-r from-blue-600 to-cyan-400 border-b border-gray-800">
+<header class="sticky top-0 z-30 bg-gradient-to-r from-blue-600 to-cyan-400 border-b border-gray-200">
 
-    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-      <div class="flex items-center gap-2">
-        <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-sm font-bold shadow-lg">T</div>
-        <span class="font-semibold text-lg tracking-tight">SebasBot</span>
-      </div>
-      <nav class="hidden md:flex items-center gap-8 text-sm text-gray-300">
-        <a href="#beneficios" class="hover:text-white transition">Beneficios</a>
-        <a href="#funciona" class="hover:text-white transition">Cómo funciona</a>
-        <a href="#planes" class="hover:text-white transition">Planes</a>
-      </nav>
-      <a href="#prueba" class="px-5 py-2 rounded-full text-sm btn-primary shadow-md">Prueba gratis 14 días</a>
-    </div>
-  </header>
+<div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+  <div class="flex items-center gap-2 text-white">
+    <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-sm font-bold shadow-lg">T</div>
+    <span class="font-semibold text-lg tracking-tight">SebasBot</span>
+  </div>
+  <nav class="hidden md:flex items-center gap-8 text-sm text-white">
+    <a href="#beneficios" class="hover:text-gray-200 transition">Beneficios</a>
+    <a href="#funciona" class="hover:text-gray-200 transition">Cómo funciona</a>
+    <a href="#planes" class="hover:text-gray-200 transition">Planes</a>
+  </nav>
+  <a href="#prueba" class="px-5 py-2 rounded-full text-sm btn-primary shadow-md">Prueba gratis 14 días</a>
+</div>
+</header>
 
-  <!-- HERO -->
 <section class="section-img py-20 min-h-[85vh] flex items-center">
 
-  <div class="max-w-7xl mx-auto px-6 w-full">
+<div class="max-w-7xl mx-auto px-6 w-full">
 
-  <div class="relative z-10 grid md:grid-cols-2 gap-12 items-center">
+<div class="relative z-10 grid md:grid-cols-2 gap-12 items-center">
 
-    <!-- Columna izquierda -->
-    <div>
-      <h2 class="text-4xl md:text-5xl font-bold mb-5 leading-tight">
-        <span class="gradient-text">Convierte WhatsApp</span> en tu mejor camarero
-      </h2>
+<div>
+  <h2 class="text-4xl md:text-5xl font-bold mb-5 leading-tight">
+    <span class="gradient-text">Convierte WhatsApp</span> en tu mejor camarero
+  </h2>
 
-      <p class="text-gray-300 mb-6 max-w-lg text-base md:text-lg">
-        Responde a clientes, gestiona reservas y vende más sin contratar más personal.
-        Todo automático. 24/7.
-      </p>
+  <p class="text-gray-700 mb-6 max-w-lg text-base md:text-lg">
+    Responde a clientes, gestiona reservas y vende más sin contratar más personal.
+    Todo automático. 24/7.
+  </p>
 
-      <div class="flex flex-wrap gap-4 mb-4">
-        <a href="#prueba" class="px-6 py-3 rounded-full btn-primary text-sm">
-          Prueba gratis 14 días
-        </a>
+  <div class="flex flex-wrap gap-4 mb-4">
+    <a href="#prueba" class="px-6 py-3 rounded-full btn-primary text-sm">
+      Prueba gratis 14 días
+    </a>
 
-        <a href="#" id="heroWhatsAppBtn"
-          class="px-6 py-3 rounded-full border border-blue-500 text-blue-300 text-sm font-semibold hover:bg-blue-500 hover:text-white transition">
-          Hablemos por WhatsApp
-        </a>
-      </div>
-
-      <p class="text-xs text-gray-400">
-        Automatiza respuestas, hace seguimiento y se enfoca al cierre de ventas
-      </p>
-    </div>
-
-    <!-- CHAT HERO -->
-    <div> <div class="bg-gradient-to-r from-blue-700 to-blue-500 border border-blue-700 rounded-3xl p-5 md:p-6 shadow-[0_20px_60px_rgba(15,23,42,0.9)]"> <div class="flex justify-between items-center mb-4"> <span class=" text-[7px] md:text-xs text-slate-400 font-bold px-2 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/40 flex items-center gap-1"> <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span> SebasBot en acción </span> </div> <div class="bg-slate-950/80 border border-slate-800 rounded-2xl p-4 flex flex-col h-80"> <!-- Mensajes --> <div id="chatbox" class="flex-1 space-y-3 overflow-y-auto pr-1 text-xs md:text-sm"></div> <!-- Input --> <form id="chatForm" class="mt-4 flex items-center gap-2"> <input id="chatInput" type="text" autocomplete="off" placeholder="Pregúntame cómo funciona..." class="flex-1 px-3 py-2 rounded-full bg-slate-900 border border-slate-700 text-xs md:text-sm text-gray-400 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500" /> <button type="submit" class="flex items-center justify-center w-10 h-10 rounded-full bg-blue-600 hover:bg-blue-500 text-sm shadow-md"> ▶︎ </button> </form> </div> <p class="mt-3 text-[11px] md:text-xs text-slate-400"> Este chat es una demo. Tus datos se usan para mostrar cómo SebasBot puede capturar contacto y calificar interesados de forma automática. </p> </div>
-
-    
-</div>
+    <a href="#" id="heroWhatsAppBtn"
+      class="px-6 py-3 rounded-full border border-blue-600 text-blue-600 text-sm font-semibold hover:bg-blue-600 hover:text-white transition">
+      Hablemos por WhatsApp
+    </a>
   </div>
+
+  <p class="text-xs text-gray-500">
+    Automatiza respuestas, hace seguimiento y se enfoca al cierre de ventas
+  </p>
+</div>
+
+<div> <div class="bg-gradient-to-r from-blue-700 to-blue-500 border border-blue-700 rounded-3xl p-5 md:p-6 shadow-[0_20px_60px_rgba(0,0,0,0.15)]"> <div class="flex justify-between items-center mb-4"> <span class=" text-[7px] md:text-xs font-bold px-2 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/40 flex items-center gap-1"> <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span> SebasBot en acción </span> </div> <div class="bg-white border border-gray-200 rounded-2xl p-4 flex flex-col h-80"> <div id="chatbox" class="flex-1 space-y-3 overflow-y-auto pr-1 text-xs md:text-sm"></div> <form id="chatForm" class="mt-4 flex items-center gap-2"> <input id="chatInput" type="text" autocomplete="off" placeholder="Pregúntame cómo funciona..." class="flex-1 px-3 py-2 rounded-full bg-gray-100 border border-gray-300 text-xs md:text-sm text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500" /> <button type="submit" class="flex items-center justify-center w-10 h-10 rounded-full bg-blue-600 hover:bg-blue-500 text-white text-sm shadow-md"> ▶︎ </button> </form> </div> <p class="mt-3 text-[11px] md:text-xs text-blue-100"> Este chat es una demo. Tus datos se usan para mostrar cómo SebasBot puede capturar contacto y calificar interesados de forma automática. </p> </div>
+</div>
+</div>
 </section>
 
-  <!-- PROBLEMA -->
-  <section id="beneficios" class="py-20 border-t border-gray-800 section-bg text-center">
-    <div class="max-w-6xl mx-auto px-6">
-      <h3 class="text-3xl font-semibold mb-12">¿Pasa esto en tu restaurante?</h3>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-[#18181F] p-6 rounded-2xl border border-gray-800">
-          <h4 class="text-lg font-semibold mb-2">📞 Pierdes reservas</h4>
-          <p class="text-gray-400 text-sm">Te cuesta responder todos los mensajes a tiempo.</p>
-        </div>
-        <div class="bg-[#18181F] p-6 rounded-2xl border border-gray-800">
-          <h4 class="text-lg font-semibold mb-2">💸 Clientes se van</h4>
-          <p class="text-gray-400 text-sm">Tardas más de 5 min y reservan en otro lugar.</p>
-        </div>
-        <div class="bg-[#18181F] p-6 rounded-2xl border border-gray-800">
-          <h4 class="text-lg font-semibold mb-2">⏳ Personal saturado</h4>
-          <p class="text-gray-400 text-sm">Tu equipo pierde tiempo respondiendo lo mismo.</p>
-        </div>
-      </div>
+<section id="beneficios" class="py-20 border-t border-gray-200 section-bg text-center">
+<div class="max-w-6xl mx-auto px-6">
+<h3 class="text-3xl font-semibold mb-12">¿Pasa esto en tu restaurante?</h3>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
+<h4 class="text-lg font-semibold mb-2">📞 Pierdes reservas</h4>
+<p class="text-gray-500 text-sm">Te cuesta responder todos los mensajes a tiempo.</p>
+</div>
+<div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
+<h4 class="text-lg font-semibold mb-2">💸 Clientes se van</h4>
+<p class="text-gray-500 text-sm">Tardas más de 5 min y reservan en otro lugar.</p>
+</div>
+<div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
+<h4 class="text-lg font-semibold mb-2">⏳ Personal saturado</h4>
+<p class="text-gray-500 text-sm">Tu equipo pierde tiempo respondiendo lo mismo.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="beneficios" class="py-20 border-t border-gray-200 section-bg text-center">
+<div class="max-w-6xl mx-auto px-6">
+<h3 class="text-3xl font-semibold mb-12"><span class="gradient-text">SebasBot</span> hace esto por ti</h3>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
+<h4 class="text-lg font-semibold mb-2">⏱️ Ahorra tiempo</h4>
+<p class="text-gray-500 text-sm">Responde automáticamente 24/7 y olvídate de las tareas repetitivas.</p>
+</div>
+<div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
+<h4 class="text-lg font-semibold mb-2">🤖 Habla como tú</h4>
+<p class="text-gray-500 text-sm">Entrena tu Chatbot con tu tono, estilo y respuestas personalizadas.</p>
+</div>
+<div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
+<h4 class="text-lg font-semibold mb-2">🚀 Genera más ventas</h4>
+<p class="text-gray-500 text-sm">Capta más leads y cierra más ventas sin perder oportunidades.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="funciona" class="py-20 border-t border-gray-200 section-bg">
+<div class="max-w-6xl mx-auto px-6 text-center">
+<h3 class="text-3xl font-semibold mb-4">¿Cómo funciona?</h3>
+<p class="text-gray-500 mb-12">En lugar de responder uno a uno, dejas que SebasBot haga el trabajo por ti.</p>
+<div class="grid md:grid-cols-3 gap-8 text-left text-gray-700">
+<div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
+
+      <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white text-sm font-bold shadow-lg mb-4">1</div>
+      
+      <h5 class="gradient-text font-semibold mb-2">Conectamos tu WhatsApp</h5>
+      <h5 class="font-semibold mb-2">Sin cambiar tu número.</h5>
+      <p class="text-gray-600">Cargamos la información clave de tu marca, tus servicios y tu forma de comunicar para que SebasBot hable como tú.</p>
     </div>
-  </section>
-  
-  <!-- BENEFICIOS -->
-  <section id="beneficios" class="py-20 border-t border-gray-800 section-bg text-center">
-    <div class="max-w-6xl mx-auto px-6">
-      <h3 class="text-3xl font-semibold mb-12"><span class="gradient-text">SebasBot</span> hace esto por ti</h3>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-[#18181F] p-6 rounded-2xl border border-gray-800">
-          <h4 class="text-lg font-semibold mb-2">⏱️ Ahorra tiempo</h4>
-          <p class="text-gray-400 text-sm">Responde automáticamente 24/7 y olvídate de las tareas repetitivas.</p>
-        </div>
-        <div class="bg-[#18181F] p-6 rounded-2xl border border-gray-800">
-          <h4 class="text-lg font-semibold mb-2">🤖 Habla como tú</h4>
-          <p class="text-gray-400 text-sm">Entrena tu Chatbot con tu tono, estilo y respuestas personalizadas.</p>
-        </div>
-        <div class="bg-[#18181F] p-6 rounded-2xl border border-gray-800">
-          <h4 class="text-lg font-semibold mb-2">🚀 Genera más ventas</h4>
-          <p class="text-gray-400 text-sm">Capta más leads y cierra más ventas sin perder oportunidades.</p>
-        </div>
-      </div>
+    <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
+      
+      <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white text-sm font-bold shadow-lg mb-4">2</div>
+      
+      <h5 class="gradient-text font-semibold mb-2">Lo personalizamos a tu negocio</h5>
+      <h5 class="font-semibold mb-2">Adaptado a tu restaurante.</h5>
+      <p class="text-gray-600">Cuando alguien escribe, SebasBot responde, identifica interés real y pide los datos necesarios (WhatsApp y correo).</p>
     </div>
-  </section>
-
-  <!-- CÓMO FUNCIONA -->
-  <section id="funciona" class="py-20 border-t border-gray-800 section-bg">
-    <div class="max-w-6xl mx-auto px-6 text-center">
-      <h3 class="text-3xl font-semibold mb-4">¿Cómo funciona?</h3>
-      <p class="text-gray-400 mb-12">En lugar de responder uno a uno, dejas que SebasBot haga el trabajo por ti.</p>
-      <div class="grid md:grid-cols-3 gap-8 text-left text-gray-300">
-        <div class="bg-[#18181F] p-6 rounded-2xl border border-gray-800">
-          
-          <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-sm font-bold shadow-lg">1</div>
-          
-          <h5 class="gradient-text font-semibold mb-2">Conectamos tu WhatsApp</h5>
-          <h5 class="font-semibold mb-2">Sin cambiar tu número.</h5>
-          <p>Cargamos la información clave de tu marca, tus servicios y tu forma de comunicar para que SebasBot hable como tú.</p>
-        </div>
-        <div class="bg-[#18181F] p-6 rounded-2xl border border-gray-800">
-          
-          <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-sm font-bold shadow-lg">2</div>
-          
-          <h5 class="gradient-text font-semibold mb-2">Lo personalizamos a tu negocio</h5>
-          <h5 class="font-semibold mb-2">Adaptado a tu restaurante.</h5>
-          <p>Cuando alguien escribe, SebasBot responde, identifica interés real y pide los datos necesarios (WhatsApp y correo).</p>
-        </div>
-        <div class="bg-[#18181F] p-6 rounded-2xl border border-gray-800">
-          
-          <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-sm font-bold shadow-lg">3</div>
-          
-          <h5 class="gradient-text font-semibold mb-2">Empiezas a vender más</h5>
-          <h5 class="font-semibold mb-2">Todo automático desde el día 1.</h5>
-          <p>Te llegan contactos ya filtrados y con contexto para que puedas agendar, enviar propuesta o continuar la conversación.</p>
-        </div>
-      </div>
+    <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
+      
+      <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white text-sm font-bold shadow-lg mb-4">3</div>
+      
+      <h5 class="gradient-text font-semibold mb-2">Empiezas a vender más</h5>
+      <h5 class="font-semibold mb-2">Todo automático desde el día 1.</h5>
+      <p class="text-gray-600">Te llegan contactos ya filtrados y con contexto para que puedas agendar, enviar propuesta o continuar la conversación.</p>
     </div>
-  </section>
+  </div>
+</div>
+</section>
 
-  <!-- COMPARATIVA -->
-  <section class="py-20 section-bg border-t border-gray-800">
-    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-8">
-      <div class="bg-[#18181F] p-6 rounded-2xl border border-blue-700">
-        <h4 class="font-semibold mb-4">Con <span class="gradient-text">SebasBot</span></h4>
-        <ul class="space-y-2 text-gray-300 text-sm">
-          <li>✅ IA entrenada en tu tono y manera: ¡Habla como tu!</li>
-          <li>✅ Conecta WhatsApp y responde 24/7</li>
-          <li>✅ Guarda leads en tu Sheets con nombre, apellido, email y teléfono</li>
-          <li>✅ Memoria completa por cada conversación</li>
-          <li>✅ Soporte directo por WhatsApp con SebasBot</li>
-        </ul>
-      </div>
-      <div class="bg-[#18181F] p-6 rounded-2xl border border-gray-800">
-        <h4 class="font-semibold mb-4">Sin SebasBot</h4>
-        <ul class="space-y-2 text-gray-300 text-sm">
-          <li>❌ Respuestas tardías o inconsistentes</li>
-          <li>❌ Leads sin datos ordenados ni seguimiento</li>
-          <li>❌ Sin trazabilidad en las conversaciones</li>
-          <li>❌ Mensajes que suenan a robot o muy genéricos</li>
-          <li>❌ Tiempo perdido en tareas repetitivas</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+<section class="py-20 section-bg border-t border-gray-200">
+<div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-8">
+<div class="bg-white p-6 rounded-2xl border border-blue-500 shadow-sm">
+<h4 class="font-semibold mb-4">Con <span class="gradient-text">SebasBot</span></h4>
+<ul class="space-y-2 text-gray-700 text-sm">
+<li>✅ IA entrenada en tu tono y manera: ¡Habla como tu!</li>
+<li>✅ Conecta WhatsApp y responde 24/7</li>
+<li>✅ Guarda leads en tu Sheets con nombre, apellido, email y teléfono</li>
+<li>✅ Memoria completa por cada conversación</li>
+<li>✅ Soporte directo por WhatsApp con SebasBot</li>
+</ul>
+</div>
+<div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
+<h4 class="font-semibold mb-4">Sin SebasBot</h4>
+<ul class="space-y-2 text-gray-700 text-sm">
+<li>❌ Respuestas tardías o inconsistentes</li>
+<li>❌ Leads sin datos ordenados ni seguimiento</li>
+<li>❌ Sin trazabilidad en las conversaciones</li>
+<li>❌ Mensajes que suenan a robot o muy genéricos</li>
+<li>❌ Tiempo perdido en tareas repetitivas</li>
+</ul>
+</div>
+</div>
+</section>
 
-  <!-- PLANES -->
-  <section id="planes" class="py-20 border-t border-gray-800">
-    <div class="max-w-6xl mx-auto px-6 text-center">
-      <h3 class="text-3xl font-semibold mb-10">Elige tu plan</h3>
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="bg-[#18181F] p-8 rounded-2xl border border-gray-800">
-          <p class="text-gray-400 mb-2">Desde 190€/mes</p>
-          <h4 class="text-xl font-semibold mb-4">Plan Personal</h4>
-          <p class="text-gray-400 mb-6">Ideal para freelancers o marcas personales.</p>
-          <ul class="text-left space-y-2 text-sm text-gray-300 mb-6">
-            <li>✅ 1 Asistente Virtual IA personalizado</li>
-            <li>✅ Conectado a 1 cuenta de WhatsApp</li>
-            <li>✅ 30 conversaciones completas al día</li>
-            <li>✅ Guarda datos en tu CRM (nombre, apellido, teléfono, email)</li>
-            <li>✅ Soporte por WhatsApp con SebasBot PRO</li>
-          </ul>
-          <a href="#prueba" class="btn-primary px-6 py-3 rounded-full inline-block">Prueba gratis 14 días</a>
-        </div>
-        <div class="bg-[#18181F] p-8 rounded-2xl border border-blue-700">
-          <p class="text-gray-400 mb-2">Desde 270€/mes</p>
-          <h4 class="text-xl font-semibold mb-4">Plan para Negocio</h4>
-          <p class="text-gray-400 mb-6">Para empresas que quieren convertir más y crecer.</p>
-          <ul class="text-left space-y-2 text-sm text-gray-300 mb-6">
-            <li>✅ 1 Asistente Virtual IA personalizado</li>
-            <li>✅ Conectado a 1 cuenta de WhatsApp</li>
-            <li>✅ 100 conversaciones completas al día</li>
-            <li>✅ Guarda datos en tu CRM (nombre, apellido, teléfono, email)</li>
-            <li>✅ Agenta citas y reservas</li>
-            <li>✅ Memoria de conversaciones</li>
-            <li>✅ Soporte por WhatsApp con SebasBot PRO</li>
-          </ul>
-          <a href="#prueba" class="btn-primary px-6 py-3 rounded-full inline-block">Prueba gratis 14 días</a>
-        </div>
-      </div>
-    </div>
-  </section>
+<section id="planes" class="py-20 border-t border-gray-200">
+<div class="max-w-6xl mx-auto px-6 text-center">
+<h3 class="text-3xl font-semibold mb-10">Elige tu plan</h3>
+<div class="grid md:grid-cols-2 gap-8">
+<div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm">
+<p class="text-gray-500 mb-2">Desde 190€/mes</p>
+<h4 class="text-xl font-semibold mb-4">Plan Personal</h4>
+<p class="text-gray-500 mb-6">Ideal para freelancers o marcas personales.</p>
+<ul class="text-left space-y-2 text-sm text-gray-700 mb-6">
+<li>✅ 1 Asistente Virtual IA personalizado</li>
+<li>✅ Conectado a 1 cuenta de WhatsApp</li>
+<li>✅ 30 conversaciones completas al día</li>
+<li>✅ Guarda datos en tu CRM (nombre, apellido, teléfono, email)</li>
+<li>✅ Soporte por WhatsApp con SebasBot PRO</li>
+</ul>
+<a href="#prueba" class="btn-primary px-6 py-3 rounded-full inline-block">Prueba gratis 14 días</a>
+</div>
+<div class="bg-white p-8 rounded-2xl border border-blue-500 shadow-sm">
+<p class="text-gray-500 mb-2">Desde 270€/mes</p>
+<h4 class="text-xl font-semibold mb-4">Plan para Negocio</h4>
+<p class="text-gray-500 mb-6">Para empresas que quieren convertir más y crecer.</p>
+<ul class="text-left space-y-2 text-sm text-gray-700 mb-6">
+<li>✅ 1 Asistente Virtual IA personalizado</li>
+<li>✅ Conectado a 1 cuenta de WhatsApp</li>
+<li>✅ 100 conversaciones completas al día</li>
+<li>✅ Guarda datos en tu CRM (nombre, apellido, teléfono, email)</li>
+<li>✅ Agenta citas y reservas</li>
+<li>✅ Memoria de conversaciones</li>
+<li>✅ Soporte por WhatsApp con SebasBot PRO</li>
+</ul>
+<a href="#prueba" class="btn-primary px-6 py-3 rounded-full inline-block">Prueba gratis 14 días</a>
+</div>
+</div>
+</div>
+</section>
 
-  <!-- FORMULARIO -->
-  <section id="prueba" class="py-20 border-t border-gray-800 section-bg">
-    <div class="max-w-4xl mx-auto px-6">
-      <h3 class="text-3xl font-semibold text-center">Prueba gratis 14 días</h3>
-      <p class="text-center text-gray-400 mb-8">Déjanos tus datos y te contactamos.</p>
-      <form id="leadForm" class="grid md:grid-cols-2 gap-6 text-sm">
-        <div>
-          <label class="block mb-2 text-gray-400">Nombre</label>
-          <input id="formNombre" name="nombre" type="text" placeholder="Tu nombre" class="w-full p-3 rounded-lg bg-[#18181F] border border-gray-700 text-gray-400" />
-        </div>
-        <div>
-          <label class="block mb-2 text-gray-400">Apellido</label>
-          <input id="formApellido" name="apellido" type="text" placeholder="Tu apellido" class="w-full p-3 rounded-lg bg-[#18181F] border border-gray-700 text-gray-400" />
-        </div>
-        <div>
-          <label class="block mb-2 text-gray-400">Email</label>
-          <input id="formEmail" name="email" type="email" placeholder="tu@email.com" class="w-full p-3 rounded-lg bg-[#18181F] border border-gray-700 text-gray-400" />
-        </div>
-        <div>
-          <label class="block mb-2 text-gray-400">Teléfono (con indicativo país)</label>
-          <input id="formTelefono" name="telefono" type="tel" placeholder="+34 600 123 456" class="w-full p-3 rounded-lg bg-[#18181F] border border-gray-700 text-gray-400" />
-        </div>
-        <div class="md:col-span-2 text-center mt-4">
-          <button type="submit" class="btn-primary px-8 py-3 rounded-full">Prueba gratis 14 días</button>
-          <p class="text-xs text-gray-500 mt-3">Al enviar aceptas nuestra Política de Privacidad.</p>
-        </div>
-      </form>
-    </div>
-  </section>
+<section id="prueba" class="py-20 border-t border-gray-200 section-bg">
+<div class="max-w-4xl mx-auto px-6">
+<h3 class="text-3xl font-semibold text-center">Prueba gratis 14 días</h3>
+<p class="text-center text-gray-500 mb-8">Déjanos tus datos y te contactamos.</p>
+<form id="leadForm" class="grid md:grid-cols-2 gap-6 text-sm">
+<div>
+<label class="block mb-2 text-gray-600">Nombre</label>
+<input id="formNombre" name="nombre" type="text" placeholder="Tu nombre" class="w-full p-3 rounded-lg bg-white border border-gray-300 text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+</div>
+<div>
+<label class="block mb-2 text-gray-600">Apellido</label>
+<input id="formApellido" name="apellido" type="text" placeholder="Tu apellido" class="w-full p-3 rounded-lg bg-white border border-gray-300 text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+</div>
+<div>
+<label class="block mb-2 text-gray-600">Email</label>
+<input id="formEmail" name="email" type="email" placeholder="tu@email.com" class="w-full p-3 rounded-lg bg-white border border-gray-300 text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+</div>
+<div>
+<label class="block mb-2 text-gray-600">Teléfono (con indicativo país)</label>
+<input id="formTelefono" name="telefono" type="tel" placeholder="+34 600 123 456" class="w-full p-3 rounded-lg bg-white border border-gray-300 text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+</div>
+<div class="md:col-span-2 text-center mt-4">
+<button type="submit" class="btn-primary px-8 py-3 rounded-full">Prueba gratis 14 días</button>
+<p class="text-xs text-gray-600 mt-3">Al enviar aceptas nuestra Política de Privacidad.</p>
+</div>
+</form>
+</div>
+</section>
 
-  <!-- USO PERSONAL Y EMPRESAS -->
-  <section class="py-20 border-t border-gray-800">
-    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12">
-      <div>
-        <h3 class="text-2xl font-semibold mb-4">Para uso personal y marca propia</h3>
-        <p class="text-gray-400 mb-4">Si tienes una marca personal, eres creador de contenido, freelance o profesional independiente, SebasBot se convierte en tu filtro inteligente.</p>
-        <ul class="list-disc ml-6 text-gray-400 space-y-2 text-sm">
-          <li>Responde dudas frecuentes mientras tú trabajas, creas o descansas.</li>
-          <li>Envía enlaces a tu portafolio, agenda, formulario o recursos.</li>
-          <li>Guarda los datos de los contactos interesados para que les escribas después.</li>
-        </ul>
-      </div>
-      <div class="bg-[#18181F] p-6 rounded-2xl border border-blue-700 text-gray-300">
-        <h4 class="text-blue-400 mb-2">Ejemplo realista</h4>
-        <p>“Recibo mensajes a todas horas pidiendo información y no siempre puedo responder. SebasBot responde por mí, manda la info correcta y me deja los leads calientes listos para escribirles más tarde.”</p>
-      </div>
-    </div>
+<section class="py-20 border-t border-gray-200">
+<div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12">
+<div>
+<h3 class="text-2xl font-semibold mb-4">Para uso personal y marca propia</h3>
+<p class="text-gray-500 mb-4">Si tienes una marca personal, eres creador de contenido, freelance o profesional independiente, SebasBot se convierte en tu filtro inteligente.</p>
+<ul class="list-disc ml-6 text-gray-500 space-y-2 text-sm">
+<li>Responde dudas frecuentes mientras tú trabajas, creas o descansas.</li>
+<li>Envía enlaces a tu portafolio, agenda, formulario o recursos.</li>
+<li>Guarda los datos de los contactos interesados para que les escribas después.</li>
+</ul>
+</div>
+<div class="bg-white p-6 rounded-2xl border border-blue-300 text-gray-700 shadow-sm">
+<h4 class="text-blue-600 font-semibold mb-2">Ejemplo realista</h4>
+<p>“Recibo mensajes a todas horas pidiendo información y no siempre puedo responder. SebasBot responde por mí, manda la info correcta y me deja los leads calientes listos para escribirles más tarde.”</p>
+</div>
+</div>
 
-    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 mt-20">
-      <div>
-        <h3 class="text-2xl font-semibold mb-4">Para equipos y empresas</h3>
-        <p class="text-gray-400 mb-4">Convierte SebasBot en el primer punto de contacto de tu negocio: contesta, educa al cliente y deriva a la persona o canal correcto.</p>
-        <ul class="list-disc ml-6 text-gray-400 space-y-2 text-sm">
-          <li>Reduce carga en tu equipo de atención o setters.</li>
-          <li>Estandariza respuestas y procesos de información.</li>
-          <li>Integra con tus herramientas (CRM, Sheets, automatizaciones, etc.).</li>
-        </ul>
-      </div>
-      <div class="bg-[#18181F] p-6 rounded-2xl border border-blue-700 text-gray-300">
-        <h4 class="text-blue-400 mb-2">Resultado típico</h4>
-        <p>“Antes teníamos el WhatsApp saturado. Ahora SebasBot responde lo básico, captura datos y solo nos llegan las conversaciones que realmente vale la pena atender.”</p>
-      </div>
-    </div>
-  </section>
+<div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 mt-20">
+  <div>
+    <h3 class="text-2xl font-semibold mb-4">Para equipos y empresas</h3>
+    <p class="text-gray-500 mb-4">Convierte SebasBot en el primer punto de contacto de tu negocio: contesta, educa al cliente y deriva a la persona o canal correcto.</p>
+    <ul class="list-disc ml-6 text-gray-500 space-y-2 text-sm">
+      <li>Reduce carga en tu equipo de atención o setters.</li>
+      <li>Estandariza respuestas y procesos de información.</li>
+      <li>Integra con tus herramientas (CRM, Sheets, automatizaciones, etc.).</li>
+    </ul>
+  </div>
+  <div class="bg-white p-6 rounded-2xl border border-blue-300 text-gray-700 shadow-sm">
+    <h4 class="text-blue-600 font-semibold mb-2">Resultado típico</h4>
+    <p>“Antes teníamos el WhatsApp saturado. Ahora SebasBot responde lo básico, captura datos y solo nos llegan las conversaciones que realmente vale la pena atender.”</p>
+  </div>
+</div>
+</section>
 
-  <!-- CTA FINAL -->
-  <section class="bg-gradient-to-r from-blue-700 to-blue-500 py-16 text-center">
-    <h3 class="text-2xl md:text-3xl font-semibold mb-4">Convierte SebasBot en tu asistente 24/7</h3>
-    <p class="max-w-2xl mx-auto mb-6 text-sm md:text-base opacity-90">
-      Empieza con una prueba gratuita de 14 días y descubre cómo puede transformar tu comunicación y tus resultados.
-    </p>
-    <a href="#prueba" class="px-6 py-3 rounded-full btn-light text-sm">Empezar ahora · Prueba gratis 14 días</a>
-  </section>
+<section class="bg-gradient-to-r from-blue-700 to-blue-500 py-16 text-center text-white">
+<h3 class="text-2xl md:text-3xl font-semibold mb-4">Convierte SebasBot en tu asistente 24/7</h3>
+<p class="max-w-2xl mx-auto mb-6 text-sm md:text-base opacity-90">
+Empieza con una prueba gratuita de 14 días y descubre cómo puede transformar tu comunicación y tus resultados.
+</p>
+<a href="#prueba" class="px-6 py-3 rounded-full btn-light text-sm">Empezar ahora · Prueba gratis 14 días</a>
+</section>
 
-  <footer class="py-8 text-center text-gray-500 text-xs border-t border-gray-800 bg-[#0B0B0F]">
-    © 2025 SebasBot — Tu asistente personalizado con Inteligencia Artificial.
-  </footer>
+<footer class="py-8 text-center text-gray-600 text-xs border-t border-gray-200 bg-white">
+© 2025 SebasBot — Tu asistente personalizado con Inteligencia Artificial.
+</footer>
 
-  </body>
-  <script>
-  const chatbox = document.getElementById('chatbox');
-  const form = document.getElementById('chatForm');
-  const input = document.getElementById('chatInput');
-
-  function addMsg(msg, sender) {
-    const div = document.createElement('div');
-    div.className = sender === 'bot' ? 'flex justify-start' : 'flex justify-end';
-
-    const bubble = document.createElement('div');
-    bubble.className = sender === 'bot'
-      ? 'inline-block max-w-[80%] bg-slate-800 text-slate-100 px-3 py-2 rounded-2xl rounded-bl-sm text-xs md:text-sm'
-      : 'inline-block max-w-[80%] bg-blue-600 text-white px-3 py-2 rounded-2xl rounded-br-sm text-xs md:text-sm';
-
-    bubble.textContent = msg;
-    div.appendChild(bubble);
-    chatbox.appendChild(div);
-    chatbox.scrollTop = chatbox.scrollHeight;
-  }
-
-  let step = 0;
-  const lead = { phone: '', email: '' };
-
-  function isValidEmail(text) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(text.trim());
-  }
-
-  function isValidPhone(text) {
-    const digits = text.replace(/\D/g, '');
-    return digits.length >= 7;
-  }
-
-  function isGreeting(text) {
-    const greetings = ['hola', 'buenas', 'hey', 'hello', 'holi', 'qué tal', 'buen día', 'saludos'];
-    const normalized = text.toLowerCase();
-    return greetings.some(g => normalized.includes(g));
-  }
-
-  function isInterested(text) {
-    const interest = [
-      'sí', 'si', 'claro', 'quiero', 'me interesa', 'cómo funciona', 'funciona',
-      'probar', 'saber más', 'ok', 'vale', 'bueno', 'perfecto', 'de una',
-      'dale', 'listo', 'obvio', 'por supuesto'
-    ];
-    const normalized = text.toLowerCase();
-    return interest.some(i => normalized.includes(i));
-  }
-
-  // Mensaje inicial
-  if (chatbox) {
-    addMsg('Hola 👋 Soy SebasBot. ¿Te gustaría saber cómo funciona y probarlo gratis?', 'bot');
-  }
-
-  if (form && input && chatbox) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const t = input.value.trim();
-      if (!t) return;
-
-      addMsg(t, 'user');
-      input.value = '';
-
-      if (step === 0) {
-        // Detección de intención antes de pedir datos
-        if (isGreeting(t) && !isInterested(t)) {
-          setTimeout(() => {
-            addMsg(
-              'Encantado 😊 Si quieres, puedo explicarte cómo funciona SebasBot y darte acceso a una prueba gratis. ¿Te gustaría saber más?',
-              'bot'
-            );
-          }, 400);
-          return;
-        }
-        if (!isInterested(t)) {
-          setTimeout(() => {
-            addMsg(
-              'Puedo explicarte cómo funciona SebasBot para uso personal o para tu empresa, y activar tu prueba gratuita. ¿Quieres saber más?',
-              'bot'
-            );
-          }, 400);
-          return;
-        }
-
-        // Interés confirmado → pedir primero WhatsApp
-        step = 1;
-        setTimeout(() => {
-          addMsg(
-            'Perfecto 🙌 Para darte acceso a la prueba, dime tu número de WhatsApp con prefijo de país (por ejemplo: +34 600 123 456). ¿Cuál es el tuyo? 📱',
-            'bot'
-          );
-        }, 400);
-
-      } else if (step === 1) {
-        // Validar teléfono
-        if (!isValidPhone(t)) {
-          setTimeout(() => {
-            addMsg(
-              'Necesito un número válido con el formato correcto, incluyendo el prefijo de país (ejemplo: +34 600 123 456). Inténtalo de nuevo, por favor.',
-              'bot'
-            );
-          }, 400);
-          return;
-        }
-        lead.phone = t.replace(/\D/g, '');
-        step = 2;
-        setTimeout(() => {
-          addMsg(
-            'Genial 👍 Ahora, ¿cuál es tu correo electrónico? (ejemplo: nombre@empresa.com)',
-            'bot'
-          );
-        }, 400);
-
-      } else if (step === 2) {
-        // Validar email
-        if (!isValidEmail(t)) {
-          setTimeout(() => {
-            addMsg(
-              'Parece que ese correo no es válido. Escríbelo de nuevo, por favor (ejemplo: tu@email.com).',
-              'bot'
-            );
-          }, 400);
-          return;
-        }
-        lead.email = t.trim();
-        step = 3;
-        setTimeout(() => {
-          addMsg(
-            '¡Listo! 🎉 Gracias por tus datos 🙌 Podremos contactarte a los datos que nos diste para activar tu prueba gratis de SebasBot. Si prefieres hacerlo ahora, también puedes pulsar cualquier botón de “Probar gratis” de la página.',
-            'bot'
-          );
-        }, 400);
-      }
-    });
-  }
-</script>
+</body>
 <script>
-  const N8N_WEBHOOK_URL = 'https://n8n-docker-233z.onrender.com/'; // Ajusta al endpoint exacto de tu webhook
-  const WHATSAPP_PHONE = '34600123456'; // Cambia por tu número sin el '+'
+const chatbox = document.getElementById('chatbox');
+const form = document.getElementById('chatForm');
+const input = document.getElementById('chatInput');
 
-  const MSG_WITH_DATA = 'Hola, vengo de la página de SebasBot y me gustaría probarlo gratis por 14 días.';
-  const MSG_NO_DATA = 'Hola, vengo de la página de SebasBot y quiero saber más del bot con IA. ¿Me das más información?';
+function addMsg(msg, sender) {
+const div = document.createElement('div');
+div.className = sender === 'bot' ? 'flex justify-start' : 'flex justify-end';
 
-  function buildLeadPayload(source) {
-    const payload = { source: source, createdAt: new Date().toISOString() };
+const bubble = document.createElement('div');
+bubble.className = sender === 'bot'
+  ? 'inline-block max-w-[80%] bg-gray-200 text-gray-800 px-3 py-2 rounded-2xl rounded-bl-sm text-xs md:text-sm'
+  : 'inline-block max-w-[80%] bg-blue-600 text-white px-3 py-2 rounded-2xl rounded-br-sm text-xs md:text-sm';
 
-    // Datos desde el chat, si existen
-    try {
-      if (typeof lead !== 'undefined') {
-        if (lead.phone) payload.phone = lead.phone;
-        if (lead.email) payload.email = lead.email;
-      }
-    } catch (e) {}
+bubble.textContent = msg;
+div.appendChild(bubble);
+chatbox.appendChild(div);
+chatbox.scrollTop = chatbox.scrollHeight;
+}
 
-    // Datos desde el formulario, si existen
-    const nombreInput = document.getElementById('formNombre');
-    const apellidoInput = document.getElementById('formApellido');
-    const emailInput = document.getElementById('formEmail');
-    const telInput = document.getElementById('formTelefono');
+let step = 0;
+const lead = { phone: '', email: '' };
 
-    if (nombreInput && nombreInput.value.trim()) payload.nombre = nombreInput.value.trim();
-    if (apellidoInput && apellidoInput.value.trim()) payload.apellido = apellidoInput.value.trim();
-    if (emailInput && emailInput.value.trim()) payload.email = emailInput.value.trim();
-    if (telInput && telInput.value.trim()) payload.phone = telInput.value.trim();
+function isValidEmail(text) {
+const emailRegex = /^[^\\s@]+@[^\\s@]+.[^\\s@]+$/;
+return emailRegex.test(text.trim());
+}
 
-    return payload;
-  }
+function isValidPhone(text) {
+const digits = text.replace(/\D/g, '');
+return digits.length >= 7;
+}
 
-  function payloadHasContact(payload) {
-    return !!(payload.email || payload.phone);
-  }
+function isGreeting(text) {
+const greetings = ['hola', 'buenas', 'hey', 'hello', 'holi', 'qué tal', 'buen día', 'saludos'];
+const normalized = text.toLowerCase();
+return greetings.some(g => normalized.includes(g));
+}
 
-  async function sendLeadToWebhookIfAny(source) {
-    const payload = buildLeadPayload(source);
-    const hasData = payloadHasContact(payload);
-    if (!hasData) {
-      return { saved: false, hasData: false };
+function isInterested(text) {
+const interest = [
+'sí', 'si', 'claro', 'quiero', 'me interesa', 'cómo funciona', 'funciona',
+'probar', 'saber más', 'ok', 'vale', 'bueno', 'perfecto', 'de una',
+'dale', 'listo', 'obvio', 'por supuesto'
+];
+const normalized = text.toLowerCase();
+return interest.some(i => normalized.includes(i));
+}
+
+// Mensaje inicial
+if (chatbox) {
+addMsg('Hola 👋 Soy SebasBot. ¿Te gustaría saber cómo funciona y probarlo gratis?', 'bot');
+}
+
+if (form && input && chatbox) {
+form.addEventListener('submit', (e) => {
+e.preventDefault();
+const t = input.value.trim();
+if (!t) return;
+
+  addMsg(t, 'user');
+  input.value = '';
+
+  if (step === 0) {
+    // Detección de intención antes de pedir datos
+    if (isGreeting(t) && !isInterested(t)) {
+      setTimeout(() => {
+        addMsg(
+          'Encantado 😊 Si quieres, puedo explicarte cómo funciona SebasBot y darte acceso a una prueba gratis. ¿Te gustaría saber más?',
+          'bot'
+        );
+      }, 400);
+      return;
     }
-    try {
-      const res = await fetch(N8N_WEBHOOK_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-      return { saved: res.ok, hasData: true };
-    } catch (e) {
-      console.error('Error enviando a n8n', e);
-      return { saved: false, hasData: true };
+    if (!isInterested(t)) {
+      setTimeout(() => {
+        addMsg(
+          'Puedo explicarte cómo funciona SebasBot para uso personal o para tu empresa, y activar tu prueba gratuita. ¿Quieres saber más?',
+          'bot'
+        );
+      }, 400);
+      return;
     }
-  }
 
-  function openWhatsAppWithStatus(saved, hasData) {
-    const text = saved && hasData ? MSG_WITH_DATA : MSG_NO_DATA;
-    const url = 'https://wa.me/' + WHATSAPP_PHONE + '?text=' + encodeURIComponent(text);
-    window.open(url, '_blank');
-  }
+    // Interés confirmado → pedir primero WhatsApp
+    step = 1;
+    setTimeout(() => {
+      addMsg(
+        'Perfecto 🙌 Para darte acceso a la prueba, dime tu número de WhatsApp con prefijo de país (por ejemplo: +34 600 123 456). ¿Cuál es el tuyo? 📱',
+        'bot'
+      );
+    }, 400);
 
-  const leadForm = document.getElementById('leadForm');
-  if (leadForm) {
-    leadForm.addEventListener('submit', async function (e) {
-      e.preventDefault();
-      const result = await sendLeadToWebhookIfAny('form');
-      openWhatsAppWithStatus(result.saved, result.hasData);
-    });
-  }
+  } else if (step === 1) {
+    // Validar teléfono
+    if (!isValidPhone(t)) {
+      setTimeout(() => {
+        addMsg(
+          'Necesito un número válido con el formato correcto, incluyendo el prefijo de país (ejemplo: +34 600 123 456). Inténtalo de nuevo, por favor.',
+          'bot'
+        );
+      }, 400);
+      return;
+    }
+    lead.phone = t.replace(/\D/g, '');
+    step = 2;
+    setTimeout(() => {
+      addMsg(
+        'Genial 👍 Ahora, ¿cuál es tu correo electrónico? (ejemplo: nombre@empresa.com)',
+        'bot'
+      );
+    }, 400);
 
-  const heroWaBtn = document.getElementById('heroWhatsAppBtn');
-  if (heroWaBtn) {
-    heroWaBtn.addEventListener('click', async function (e) {
-      e.preventDefault();
-      const result = await sendLeadToWebhookIfAny('hero-button');
-      openWhatsAppWithStatus(result.saved, result.hasData);
-    });
+  } else if (step === 2) {
+    // Validar email
+    if (!isValidEmail(t)) {
+      setTimeout(() => {
+        addMsg(
+          'Parece que ese correo no es válido. Escríbelo de nuevo, por favor (ejemplo: tu@email.com).',
+          'bot'
+        );
+      }, 400);
+      return;
+    }
+    lead.email = t.trim();
+    step = 3;
+    setTimeout(() => {
+      addMsg(
+        '¡Listo! 🎉 Gracias por tus datos 🙌 Podremos contactarte a los datos que nos diste para activar tu prueba gratis de SebasBot. Si prefieres hacerlo ahora, también puedes pulsar cualquier botón de “Probar gratis” de la página.',
+        'bot'
+      );
+    }, 400);
   }
+});
+}
 </script>
+
+<script>
+const N8N_WEBHOOK_URL = 'https://n8n-docker-233z.onrender.com/'; // Ajusta al endpoint exacto de tu webhook
+const WHATSAPP_PHONE = '34600123456'; // Cambia por tu número sin el '+'
+
+const MSG_WITH_DATA = 'Hola, vengo de la página de SebasBot y me gustaría probarlo gratis por 14 días.';
+const MSG_NO_DATA = 'Hola, vengo de la página de SebasBot y quiero saber más del bot con IA. ¿Me das más información?';
+
+function buildLeadPayload(source) {
+const payload = { source: source, createdAt: new Date().toISOString() };
+
+// Datos desde el chat, si existen
+try {
+  if (typeof lead !== &#39;undefined&#39;) {
+    if (lead.phone) payload.phone = lead.phone;
+    if (lead.email) payload.email = lead.email;
+  }
+} catch (e) {}
+
+// Datos desde el formulario, si existen
+const nombreInput = document.getElementById(&#39;formNombre&#39;);
+const apellidoInput = document.getElementById(&#39;formApellido&#39;);
+const emailInput = document.getElementById(&#39;formEmail&#39;);
+const telInput = document.getElementById(&#39;formTelefono&#39;);
+
+if (nombreInput &amp;&amp; nombreInput.value.trim()) payload.nombre = nombreInput.value.trim();
+if (apellidoInput &amp;&amp; apellidoInput.value.trim()) payload.apellido = apellidoInput.value.trim();
+if (emailInput &amp;&amp; emailInput.value.trim()) payload.email = emailInput.value.trim();
+if (telInput &amp;&amp; telInput.value.trim()) payload.phone = telInput.value.trim();
+
+return payload;
+}
+
+function payloadHasContact(payload) {
+return !!(payload.email || payload.phone);
+}
+
+async function sendLeadToWebhookIfAny(source) {
+const payload = buildLeadPayload(source);
+const hasData = payloadHasContact(payload);
+if (!hasData) {
+return { saved: false, hasData: false };
+}
+try {
+const res = await fetch(N8N_WEBHOOK_URL, {
+method: 'POST',
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify(payload)
+});
+return { saved: res.ok, hasData: true };
+} catch (e) {
+console.error('Error enviando a n8n', e);
+return { saved: false, hasData: true };
+}
+}
+
+function openWhatsAppWithStatus(saved, hasData) {
+const text = saved && hasData ? MSG_WITH_DATA : MSG_NO_DATA;
+const url = 'https://wa.me/' + WHATSAPP_PHONE + '?text=' + encodeURIComponent(text);
+window.open(url, '_blank');
+}
+
+const leadForm = document.getElementById('leadForm');
+if (leadForm) {
+leadForm.addEventListener('submit', async function (e) {
+e.preventDefault();
+const result = await sendLeadToWebhookIfAny('form');
+openWhatsAppWithStatus(result.saved, result.hasData);
+});
+}
+
+const heroWaBtn = document.getElementById('heroWhatsAppBtn');
+if (heroWaBtn) {
+heroWaBtn.addEventListener('click', async function (e) {
+e.preventDefault();
+const result = await sendLeadToWebhookIfAny('hero-button');
+openWhatsAppWithStatus(result.saved, result.hasData);
+});
+}
+</script>
+
 </html>
