@@ -48,27 +48,26 @@ background-color: #E2E8F0;
 .section-bg {
 background-color: #F8FAFC;
 }
-.section-img {
-position: relative;
-background-image: url('camarero-en-restaurante-sonriendo.png');
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
+  .hero-bg {
+  background: radial-gradient(
+    circle at 20% 50%,
+    rgba(59,130,246,0.12),
+    transparent 40%
+  ),
+  radial-gradient(
+    circle at 80% 50%,
+    rgba(6,182,212,0.12),
+    transparent 40%
+  );
 }
-
-.section-img::before {
-content: "";
-position: absolute;
-inset: 0;
-background: linear-gradient(
-  to right,
-  rgba(15,23,42,0.75) 0%,
-  rgba(15,23,42,0.5) 50%,
-  rgba(15,23,42,0.2) 100%
-);
-backdrop-filter: blur(2px);
-z-index: 0;
+  .noise {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image: url('https://www.transparenttextures.com/patterns/asfalt-light.png');
+  pointer-events: none;
 }
+  
 </style>
 
 </head>
@@ -90,7 +89,8 @@ z-index: 0;
 </div>
 </header>
 
-<section class="section-img py-20 min-h-[85vh] flex items-center">
+<section class="hero-bg py-20 min-h-[85vh] flex items-center relative overflow-hidden">
+  <div class="noise"></div>
 
 <div class="max-w-7xl mx-auto px-6 w-full">
 
@@ -101,7 +101,7 @@ z-index: 0;
     <span class="gradient-text">Convierte WhatsApp</span> en tu mejor camarero
   </h2>
 
-  <p class="text-gray-700 mb-6 max-w-lg text-base md:text-lg">
+  <p class="text-gray-800 mb-6 max-w-lg text-base md:text-lg">
     Responde a clientes, gestiona reservas y vende más sin contratar más personal.
     Todo automático. 24/7.
   </p>
@@ -117,12 +117,12 @@ z-index: 0;
     </a>
   </div>
 
-  <p class="text-xs text-gray-500">
+  <p class="text-xs text-gray-600">
     Automatiza respuestas, hace seguimiento y se enfoca al cierre de ventas
   </p>
 </div>
 
-<div> <div class="bg-gradient-to-r from-blue-700 to-blue-500 border border-blue-700 rounded-3xl p-5 md:p-6 shadow-[0_20px_60px_rgba(0,0,0,0.15)]"> <div class="flex justify-between items-center mb-4"> <span class=" text-[7px] md:text-xs text-white font-bold px-2 py-1 rounded-full bg-emerald-500/20 text-emerald-100 border border-emerald-500/40 flex items-center gap-1"> <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span> SebasBot en acción </span> </div> <div class="bg-white/90 border border-gray-200 rounded-2xl p-4 flex flex-col h-80"> <div id="chatbox" class="flex-1 space-y-3 overflow-y-auto pr-1 text-xs md:text-sm"></div> <form id="chatForm" class="mt-4 flex items-center gap-2"> <input id="chatInput" type="text" autocomplete="off" placeholder="Pregúntame cómo funciona..." class="flex-1 px-3 py-2 rounded-full bg-gray-100 border border-gray-300 text-xs md:text-sm text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500" /> <button type="submit" class="flex items-center justify-center w-10 h-10 rounded-full bg-blue-600 hover:bg-blue-500 text-sm text-white shadow-md"> ▶︎ </button> </form> </div> <p class="mt-3 text-[11px] md:text-xs text-blue-100"> Este chat es una demo. Tus datos se usan para mostrar cómo SebasBot puede capturar contacto y calificar interesados de forma automática. </p> </div>
+<div> <div class="bg-gradient-to-r from-blue-800 to-blue-600 border border-blue-700 rounded-3xl p-5 md:p-6 shadow-[0_20px_60px_rgba(0,0,0,0.25)] scale-105"> <div class="flex justify-between items-center mb-4"> <span class=" text-[7px] md:text-xs text-white font-bold px-2 py-1 rounded-full bg-emerald-500/20 text-emerald-100 border border-emerald-500/40 flex items-center gap-1"> <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span> SebasBot en acción </span> </div> <div class="bg-white/90 border border-gray-200 rounded-2xl p-4 flex flex-col h-80"> <div id="chatbox" class="flex-1 space-y-3 overflow-y-auto pr-1 text-xs md:text-sm"></div> <form id="chatForm" class="mt-4 flex items-center gap-2"> <input id="chatInput" type="text" autocomplete="off" placeholder="Pregúntame cómo funciona..." class="flex-1 px-3 py-2 rounded-full bg-gray-100 border border-gray-300 text-xs md:text-sm text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500" /> <button type="submit" class="flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 hover:bg-blue-200 text-sm text-blue-600 shadow-md"> ▶︎ </button> </form> </div> <p class="mt-3 text-[11px] md:text-xs text-blue-100"> Esta conversación es un demo. Tus datos se usan para mostrar cómo SebasBot puede capturar contacto y calificar interesados de forma automática. </p> </div>
 </div>
 </div>
 </section>
