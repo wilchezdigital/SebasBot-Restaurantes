@@ -108,10 +108,10 @@ html {
     <a href="#prueba" class="px-6 py-3 rounded-full btn-primary text-sm">
       Prueba gratis 14 días
     </a>
-    <a href="#" id="heroWhatsAppBtn"
+    <button type="button" id="heroWhatsAppBtn"
       class="px-6 py-3 rounded-full border border-blue-500 text-blue-600 text-sm font-semibold hover:bg-blue-500 hover:text-white transition">
       Hablemos por WhatsApp
-    </a>
+    </button>
   </div>
 
   <p class="text-xs text-gray-600">
@@ -329,7 +329,7 @@ Empieza con una prueba gratuita de 14 días y descubre cómo puede transformar t
   </div>
   <div class="bg-white p-6 rounded-2xl border border-blue-200 shadow-sm text-gray-700">
     <h4 class="text-blue-600 font-semibold mb-2">Resultado típico</h4>
-    <p>“Antes teníamos el WhatsApp saturado. Ahora SebasBot responde por nosotros, captura datos y solo vemos cierres y las conversaciones que realmente valen la pena.”</p>
+    <p>“Antes teníamos el WhatsApp saturado. Ahora SebasBot responde por nosotros, captura datos y solo vemos ventas y las conversaciones que realmente valen la pena.”</p>
   </div>
 </div>
 </section>
@@ -379,20 +379,41 @@ Empieza con una prueba gratuita de 14 días y descubre cómo puede transformar t
 <form id="lead-form" class="grid md:grid-cols-2 gap-6 text-sm">
 <div>
 <label class="block mb-2 text-gray-200">Nombre</label>
-<input id="first_name" name="nombre" type="text" placeholder="Tu nombre" class="w-full p-3 rounded-lg bg-white border border-gray-300 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+<input id="first_name" name="nombre" type="text" required placeholder="Tu nombre" class="w-full p-3 rounded-lg bg-white border border-gray-300 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" />
 </div>
 <div>
 <label class="block mb-2 text-gray-200">Apellido</label>
-<input id="last_name" name="apellido" type="text" placeholder="Tu apellido" class="w-full p-3 rounded-lg bg-white border border-gray-300 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+<input id="last_name" name="apellido" type="text" required placeholder="Tu apellido" class="w-full p-3 rounded-lg bg-white border border-gray-300 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" />
 </div>
 <div>
 <label class="block mb-2 text-gray-200">Email</label>
-<input id="email" name="email" type="email" placeholder="tu@email.com" class="w-full p-3 rounded-lg bg-white border border-gray-300 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+<input id="email" name="email" type="email" required placeholder="tu@email.com" class="w-full p-3 rounded-lg bg-white border border-gray-300 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+<p id="error-email" class="text-red-400 text-xs mt-1 hidden">Email incorrecto</p>
 </div>
 <div>
-<label class="block mb-2 text-gray-200">Teléfono (con indicativo país)</label>
-<input id="number" name="number" type="tel" placeholder="+34 600 123 456" class="w-full p-3 rounded-lg bg-white border border-gray-300 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+  <label class="block mb-2 text-gray-200">Teléfono (con indicativo país)</label>
+
+  <div class="flex gap-2">
+    
+    <select id="country_code" required
+      class="p-3 rounded-lg bg-white border border-gray-300 text-gray-700 focus:outline-none">
+      <option value="">Prefijo</option>
+      <option value="34">🇪🇸 +34</option>
+      <option value="57">🇨🇴 +57</option>
+      <option value="52">🇲🇽 +52</option>
+      <option value="54">🇦🇷 +54</option>
+      <option value="1">🇺🇸 +1</option>
+    </select>
+
+    <input id="number" name="number" type="tel" required
+      placeholder="600123456"
+      class="w-full p-3 rounded-lg bg-white border border-gray-300 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+
+  </div>
+
+  <p id="error-number" class="text-red-400 text-xs mt-1 hidden">Teléfono incorrecto</p>
 </div>
+
 <div class="md:col-span-2 text-center mt-4">
 <button type="submit" class="btn-primary px-8 py-3 rounded-full border border-gray-300">Prueba gratis 14 días</button>
 <p class="text-xs text-gray-300 mt-3">Al enviar aceptas nuestra Política de Privacidad.</p>
@@ -402,13 +423,13 @@ Empieza con una prueba gratuita de 14 días y descubre cómo puede transformar t
 </section>
 
 <footer class="py-8 text-center text-gray-600 text-xs border-t border-gray-200 bg-gray-50">
-© 2026 SebasBot — Tu asistente personalizado con Inteligencia Artificial.
+© <span id="year"></span> SebasBot — Tu asistente personalizado con Inteligencia Artificial.
 </footer>
 
 </body>
 <script>
 const chatbox = document.getElementById('chatbox');
-const form = document.getElementById('chatForm');
+const chatForm = document.getElementById('chatForm');
 const input = document.getElementById('chatInput');
 
 function addMsg(msg, sender) {
@@ -435,8 +456,8 @@ return emailRegex.test(text.trim());
 }
 
 function isValidnumber(text) {
-const digits = text.replace(/\D/g, '');
-return digits.length >= 7;
+  const cleaned = text.replace(/\D/g, '');
+  return cleaned.length >= 8 && cleaned.length <= 15;
 }
 
 function isGreeting(text) {
@@ -460,9 +481,10 @@ if (chatbox) {
 addMsg('Hola 👋 Soy SebasBot. ¿Te gustaría saber cómo funciona y probarlo gratis?', 'bot');
 }
 
-if (form && input && chatbox) {
-  form.addEventListener('submit', (e) => {
+if (chatForm && input && chatbox) {
+  chatForm.addEventListener('submit', (e) => {
 e.preventDefault();
+    
 const t = input.value.trim();
 if (!t) return;
 
@@ -579,8 +601,11 @@ function getParam(name){
   if(el) el.value = v;
 });
 
-// Año dinámico
-document.getElementById('year').textContent = new Date().getFullYear();
+// year dynamic
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('year').textContent = new Date().getFullYear();
+});
+
 </script>
   
 
@@ -590,20 +615,6 @@ const leadForm = document.getElementById('lead-form');
 
 function isValidEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
-}
-
-function cleanPhone(phone) {
-  return phone.replace(/\s+/g, '').replace(/[^\d+]/g, '');
-}
-
-function isValidPhone(phone) {
-  const cleaned = cleanPhone(phone);
-
-  // Obligatorio indicativo
-  if (!cleaned.startsWith('+')) return false;
-
-  const digits = cleaned.replace('+', '');
-  return /^[1-9]\d{7,14}$/.test(digits);
 }
 
 if (leadForm) {
@@ -623,41 +634,67 @@ if (leadForm) {
   leadForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
+    const btn = leadForm.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+
     const numberInput = document.getElementById('number');
-    const number = numberInput.value.trim();
-    const numberClean = cleanPhone(number);
+    const countryCode = document.getElementById('country_code').value;
     const email = document.getElementById('email').value.trim();
 
-    // VALIDACIÓN NUMBER
-    if (!isValidPhone(numberClean)) {
-    alert("Introduce un teléfono válido con indicativo de país. Ej: +34 600123456 o 34600123456");
-    return;
+    const rawNumber = numberInput.value.trim();
+    const cleanedNumber = rawNumber.replace(/\D/g, '');
+
+    // RESET ERRORES
+    document.getElementById('error-email').classList.add('hidden');
+    document.getElementById('error-number').classList.add('hidden');
+
+    // VALIDAR PAÍS
+    if (!countryCode) {
+      document.getElementById('error-number').textContent = 'Selecciona tu país';
+      document.getElementById('error-number').classList.remove('hidden');
+      btn.disabled = false;
+      btn.textContent = 'Prueba gratis 14 días';
+      return;
     }
 
-    // VALIDACIÓN EMAIL
+    // VALIDAR TELÉFONO
+    if (cleanedNumber.length < 7 || cleanedNumber.length > 15) {
+      document.getElementById('error-number').textContent = 'Número inválido';
+      document.getElementById('error-number').classList.remove('hidden');
+      btn.disabled = false;
+      btn.textContent = 'Prueba gratis 14 días';
+      return;
+    }
+
+    // VALIDAR EMAIL
     if (!isValidEmail(email)) {
-    alert("Introduce un email válido. Ej: nombre@email.com");
-    return;
+      document.getElementById('error-email').classList.remove('hidden');
+      btn.disabled = false;
+      btn.textContent = 'Prueba gratis 14 días';
+      return;
     }
 
-    numberInput.value = numberClean;
+    // TELÉFONO FINAL LIMPIO (SIN +)
+    const finalPhone = countryCode + cleanedNumber;
+    numberInput.value = finalPhone;
 
     const firstName = document.getElementById('first_name').value.trim();
     const lastName  = document.getElementById('last_name').value.trim();
     const fullName  = (firstName + ' ' + lastName).trim();
 
     // LINK WHATSAPP USER
-    const usernumber = numberClean.replace('+','');
-    const followMsg = `Hola ${fullName}, te contacto por tu interés en SebasBot.`;
-    const waUserLink = `https://wa.me/${usernumber}?text=${encodeURIComponent(followMsg)}`;
-    
-    // FORM DATA (CORRECTO)
+    const waUserLink = `https://wa.me/${finalPhone}?text=${encodeURIComponent(
+      `Hola ${fullName}, te contacto por tu interés en SebasBot.`
+    )}`;
+
+    // FORM DATA
     const fd = new FormData();
-    
+    fd.append(CONFIG.form.fields.full_name, fullName);
     fd.append(CONFIG.form.fields.first_name, firstName);
     fd.append(CONFIG.form.fields.last_name, lastName);
     fd.append(CONFIG.form.fields.email, email);
-    fd.append(CONFIG.form.fields.number, numberClean);
+    fd.append(CONFIG.form.fields.number, finalPhone);
     fd.append(CONFIG.form.fields.whatsapp_link, waUserLink);
 
     // SEND GOOGLE FORM
@@ -672,9 +709,9 @@ if (leadForm) {
     }
 
     // REDIRECT A TU WHATSAPP
-    const msgToYou = `Hola, soy ${fullName || 'un interesado'}. Ya envié mis datos y quiero la prueba gratis.`;
-
-    const waYou = `https://wa.me/${CONFIG.whatsapp.number}?text=${encodeURIComponent(msgToYou)}`;
+    const waYou = `https://wa.me/${CONFIG.whatsapp.number}?text=${encodeURIComponent(
+      `Hola, soy ${fullName}. Quiero la prueba gratis.`
+    )}`;
 
     setTimeout(() => {
       window.location.href = waYou;
@@ -718,5 +755,25 @@ if (formN8N) {
 }
 </script>
 
+<script>
+// Si el usuario queire hablar por WA manda directo a poner datos en el form
+const heroBtn = document.getElementById('heroWhatsAppBtn');
+
+if (heroBtn) {
+  heroBtn.addEventListener('click', () => {
+
+    // Scroll al formulario
+    document.getElementById('prueba').scrollIntoView({
+      behavior: 'smooth'
+    });
+
+    // Focus automático
+    setTimeout(() => {
+      document.getElementById('first_name')?.focus();
+    }, 500);
+
+  });
+}
+</script>
 
 </html>
