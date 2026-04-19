@@ -376,22 +376,22 @@ Empieza con una prueba gratuita de 14 días y descubre cómo puede transformar t
 <div class="max-w-4xl mx-auto px-6">
 <h3 class="text-3xl font-semibold text-center text-white">Prueba gratis 14 días</h3>
 <p class="text-center text-gray-200 mb-8">Déjanos tus datos y te contactamos.</p>
-<form id="leadForm" class="grid md:grid-cols-2 gap-6 text-sm">
+<form id="lead-form" class="grid md:grid-cols-2 gap-6 text-sm">
 <div>
 <label class="block mb-2 text-gray-200">Nombre</label>
-<input id="formNombre" name="nombre" type="text" placeholder="Tu nombre" class="w-full p-3 rounded-lg bg-white border border-gray-300 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+<input id="first_name" name="nombre" type="text" placeholder="Tu nombre" class="w-full p-3 rounded-lg bg-white border border-gray-300 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" />
 </div>
 <div>
 <label class="block mb-2 text-gray-200">Apellido</label>
-<input id="formApellido" name="apellido" type="text" placeholder="Tu apellido" class="w-full p-3 rounded-lg bg-white border border-gray-300 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+<input id="last_name" name="apellido" type="text" placeholder="Tu apellido" class="w-full p-3 rounded-lg bg-white border border-gray-300 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" />
 </div>
 <div>
 <label class="block mb-2 text-gray-200">Email</label>
-<input id="formEmail" name="email" type="email" placeholder="tu@email.com" class="w-full p-3 rounded-lg bg-white border border-gray-300 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+<input id="email" name="email" type="email" placeholder="tu@email.com" class="w-full p-3 rounded-lg bg-white border border-gray-300 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" />
 </div>
 <div>
 <label class="block mb-2 text-gray-200">Teléfono (con indicativo país)</label>
-<input id="formTelefono" name="telefono" type="tel" placeholder="+34 600 123 456" class="w-full p-3 rounded-lg bg-white border border-gray-300 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+<input id="number" name="number" type="tel" placeholder="+34 600 123 456" class="w-full p-3 rounded-lg bg-white border border-gray-300 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" />
 </div>
 <div class="md:col-span-2 text-center mt-4">
 <button type="submit" class="btn-primary px-8 py-3 rounded-full border border-gray-300">Prueba gratis 14 días</button>
@@ -427,14 +427,14 @@ chatbox.scrollTop = chatbox.scrollHeight;
 }
 
 let step = 0;
-const lead = { phone: '', email: '' };
+const lead = { number: '', email: '' };
 
 function isValidEmail(text) {
 const emailRegex = /^[^\\s@]+@[^\\s@]+.[^\\s@]+$/;
 return emailRegex.test(text.trim());
 }
 
-function isValidPhone(text) {
+function isValidnumber(text) {
 const digits = text.replace(/\D/g, '');
 return digits.length >= 7;
 }
@@ -461,7 +461,7 @@ addMsg('Hola 👋 Soy SebasBot. ¿Te gustaría saber cómo funciona y probarlo g
 }
 
 if (form && input && chatbox) {
-form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', (e) => {
 e.preventDefault();
 const t = input.value.trim();
 if (!t) return;
@@ -501,7 +501,7 @@ if (!t) return;
 
   } else if (step === 1) {
     // Validar teléfono
-    if (!isValidPhone(t)) {
+    if (!isValidnumber(t)) {
       setTimeout(() => {
         addMsg(
           'Necesito un número válido con el formato correcto, incluyendo el prefijo de país (ejemplo: +34 600 123 456). Inténtalo de nuevo, por favor.',
@@ -510,7 +510,7 @@ if (!t) return;
       }, 400);
       return;
     }
-    lead.phone = t.replace(/\D/g, '');
+    lead.number = t.replace(/\D/g, '');
     step = 2;
     setTimeout(() => {
       addMsg(
@@ -543,84 +543,155 @@ if (!t) return;
 }
 </script>
 
+
 <script>
-const N8N_WEBHOOK_URL = 'https://n8n-docker-233z.onrender.com/'; // Ajusta al endpoint exacto de tu webhook
-const WHATSAPP_PHONE = '34600123456'; // Cambia por tu número sin el '+'
-
-const MSG_WITH_DATA = 'Hola, vengo de la página de SebasBot y me gustaría probarlo gratis por 14 días.';
-const MSG_NO_DATA = 'Hola, vengo de la página de SebasBot y quiero saber más del bot con IA. ¿Me das más información?';
-
-function buildLeadPayload(source) {
-const payload = { source: source, createdAt: new Date().toISOString() };
-
-// Datos desde el chat, si existen
-try {
-  if (typeof lead !== &#39;undefined&#39;) {
-    if (lead.phone) payload.phone = lead.phone;
-    if (lead.email) payload.email = lead.email;
+//CONFIG DE FORM
+const CONFIG = {
+  form: {
+    url: "https://docs.google.com/forms/d/e/1FAIpQLSfOyNwdF1lK8ljEAd6ZK77LaNrXcLScXH0njYp8orBVL0KphA/formResponse",
+    fields: {
+      full_name: "entry.1214786495",
+      first_name: "entry.1274159542",
+      last_name: "entry.110172957",
+      email: "entry.714567174",
+      number: "entry.728592466",
+      whatsapp_link: "entry.44797240"
+    }
+  },
+  whatsapp: {
+    number: "34603938659" // NUM DE SEBASBOT
+  },
+  n8n: {
+    webhook: "https://n8n-l07k.onrender.com/webhook/sebasbot"
   }
-} catch (e) {}
+};
+</script>
 
-// Datos desde el formulario, si existen
-const nombreInput = document.getElementById(&#39;formNombre&#39;);
-const apellidoInput = document.getElementById(&#39;formApellido&#39;);
-const emailInput = document.getElementById(&#39;formEmail&#39;);
-const telInput = document.getElementById(&#39;formTelefono&#39;);
-
-if (nombreInput &amp;&amp; nombreInput.value.trim()) payload.nombre = nombreInput.value.trim();
-if (apellidoInput &amp;&amp; apellidoInput.value.trim()) payload.apellido = apellidoInput.value.trim();
-if (emailInput &amp;&amp; emailInput.value.trim()) payload.email = emailInput.value.trim();
-if (telInput &amp;&amp; telInput.value.trim()) payload.phone = telInput.value.trim();
-
-return payload;
+<script>
+// UTMs + BASE SETUP
+function getParam(name){
+  return new URLSearchParams(window.location.search).get(name) || "";
 }
 
-function payloadHasContact(payload) {
-return !!(payload.email || payload.phone);
-}
-
-async function sendLeadToWebhookIfAny(source) {
-const payload = buildLeadPayload(source);
-const hasData = payloadHasContact(payload);
-if (!hasData) {
-return { saved: false, hasData: false };
-}
-try {
-const res = await fetch(N8N_WEBHOOK_URL, {
-method: 'POST',
-headers: { 'Content-Type': 'application/json' },
-body: JSON.stringify(payload)
+['source','medium','campaign','content','term','id'].forEach(k=>{
+  const v = getParam('utm_'+k);
+  const el = document.getElementById('utm_'+k);
+  if(el) el.value = v;
 });
-return { saved: res.ok, hasData: true };
-} catch (e) {
-console.error('Error enviando a n8n', e);
-return { saved: false, hasData: true };
-}
-}
 
-function openWhatsAppWithStatus(saved, hasData) {
-const text = saved && hasData ? MSG_WITH_DATA : MSG_NO_DATA;
-const url = 'https://wa.me/' + WHATSAPP_PHONE + '?text=' + encodeURIComponent(text);
-window.open(url, '_blank');
-}
+// Año dinámico
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 
-const leadForm = document.getElementById('leadForm');
+<script>
+// FORM GENERAL (CORE LMS + WHATSAPP)
+const leadForm = document.getElementById('lead-form');
+
 if (leadForm) {
-leadForm.addEventListener('submit', async function (e) {
-e.preventDefault();
-const result = await sendLeadToWebhookIfAny('form');
-openWhatsAppWithStatus(result.saved, result.hasData);
-});
-}
 
-const heroWaBtn = document.getElementById('heroWhatsAppBtn');
-if (heroWaBtn) {
-heroWaBtn.addEventListener('click', async function (e) {
-e.preventDefault();
-const result = await sendLeadToWebhookIfAny('hero-button');
-openWhatsAppWithStatus(result.saved, result.hasData);
-});
+  leadForm.action = CONFIG.form.url;
+
+  // Nombre completo automático
+  leadForm.addEventListener('input', () => {
+    const fn = document.getElementById('first_name').value.trim();
+    const ln = document.getElementById('last_name').value.trim();
+    const full = (fn + ' ' + ln).trim();
+
+    const fullField = document.getElementById('full_name');
+    if (fullField) fullField.value = full;
+  });
+
+  leadForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const numberInput = document.getElementById('number');
+    const number = numberInput.value.trim();
+    const numberClean = number.replace(/\s+/g, '');
+
+    // VALIDACIÓN
+    if (!/^\+?[1-9]\d{6,14}$/.test(numberClean)) {
+      alert("Introduce un teléfono válido");
+      return;
+    }
+
+    numberInput.value = numberClean;
+
+    const firstName = document.getElementById('first_name').value.trim();
+const lastName  = document.getElementById('last_name').value.trim();
+const email     = document.getElementById('email').value.trim();
+const fullName  = (firstName + ' ' + lastName).trim();
+
+// LINK WHATSAPP USER
+const usernumber = numberClean.replace('+','');
+const followMsg = `Hola ${fullName}, te contacto por tu interés en SebasBot.`;
+const waUserLink = `https://wa.me/${usernumber}?text=${encodeURIComponent(followMsg)}`;
+
+// FORM DATA (CORRECTO)
+const fd = new FormData();
+
+fd.append(CONFIG.form.fields.first_name, firstName);
+fd.append(CONFIG.form.fields.last_name, lastName);
+fd.append(CONFIG.form.fields.email, email);
+fd.append(CONFIG.form.fields.number, numberClean);
+fd.append(CONFIG.form.fields.whatsapp_link, waUserLink);
+
+    // SEND GOOGLE FORM
+    try {
+      await fetch(CONFIG.form.url, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: fd
+      });
+    } catch (err) {
+      console.error('Error form', err);
+    }
+
+    // REDIRECT A TU WHATSAPP
+    const msgToYou = `Hola, soy ${fullName || 'un interesado'}. Ya envié mis datos y quiero la prueba gratis.`;
+
+    const waYou = `https://wa.me/${CONFIG.whatsapp.number}?text=${encodeURIComponent(msgToYou)}`;
+
+    setTimeout(() => {
+      window.location.href = waYou;
+    }, 200);
+
+  });
 }
 </script>
+
+<script>
+// N8N (DESACOPLADO)
+const formN8N = document.getElementById('lead-form');
+
+if (formN8N) {
+
+  formN8N.addEventListener('submit', async () => {
+
+    const nombre = document.getElementById('first_name')?.value || "";
+    const apellido = document.getElementById('last_name')?.value || "";
+    const email = document.getElementById('email')?.value || "";
+    const number = document.getElementById('number')?.value || "";
+
+    try {
+      await fetch(CONFIG.n8n.webhook, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nombre,
+          apellido,
+          email,
+          number,
+          source: "landing"
+        })
+      });
+    } catch (err) {
+      console.error('Error n8n', err);
+    }
+
+  });
+
+}
+</script>
+
 
 </html>
