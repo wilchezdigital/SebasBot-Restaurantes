@@ -725,15 +725,11 @@ if (leadForm) {
     //fd.append("dial_code", countryData.dialCode);
 
     // SEND FORM
-    try {
-      await fetch(CONFIG.form.url, {
-        method: 'POST',
-        mode: 'no-cors',
-        body: fd
-      });
-    } catch (err) {
-      console.error('Error form', err);
-    }
+    fetch(CONFIG.form.url, {
+  method: 'POST',
+  mode: 'no-cors',
+  body: fd
+}).catch(() => {});
 
     // SEND N8N
 fetch(CONFIG.n8n.webhook, {
