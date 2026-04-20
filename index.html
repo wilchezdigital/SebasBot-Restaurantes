@@ -736,30 +736,26 @@ if (leadForm) {
     }
 
     // SEND N8N
-try {
-  await fetch(CONFIG.n8n.webhook, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      nombre: firstName,
-      apellido: lastName,
-      email,
-      number: finalPhone,
-      source: "landing"
-    })
-  });
-} catch (err) {
-  console.error('Error n8n', err);
-}
+fetch(CONFIG.n8n.webhook, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    nombre: firstName,
+    apellido: lastName,
+    email,
+    number: finalPhone,
+    source: "landing"
+  })
+}).catch(() => {});
 
     // REDIRECT A TU WHATSAPP
     const waYou = `https://wa.me/${CONFIG.whatsapp.number}?text=${encodeURIComponent(
       `Hola, soy ${fullName}. Quiero la prueba gratis.`
     )}`;
 
-    setTimeout(() => {
-      window.location.href = waYou;
-    }, 800);
+    btn.textContent = 'Redirigiendo...';
+
+    window.open(waYou, '_blank');
 
   });
 }
